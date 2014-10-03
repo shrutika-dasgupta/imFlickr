@@ -39,33 +39,6 @@
       </div>
     </div>
 
-	<script type="text/javascript">
-
-		var check_url_validity = window.location.search.substring(1);
-	
-		if(check_url_validity == "invalid_username")
-		{
-			$(document).ready(function(){
-				$("#username_validity").show();
-				$("#query_validity").hide();
-			});
-		}
-		else if(check_url_validity == "wrong_query")
-		{
-			$(document).ready(function(){
-				$("#query_validity").show();
-				$("#username_validity").hide()
-			});
-		}
-		else
-		{
-			$(document).ready(function(){
-				$("#query_validity").hide();
-				$("#username_validity").hide();
-			});
-		}
-	</script>
-
 	<div id="header" class="custom-header">
 		<div class="container">
 		<h1>imFlickr</h1>
@@ -136,7 +109,29 @@
     $( "#datepicker2" ).datepicker();
   });
 </script>
-
 <script type="text/javascript">
-	
+
+	var check_url_validity = window.location.search.substring(1);
+
+	if(check_url_validity == "invalid_username")
+	{
+		$(document).ready(function(){
+			$("#username_validity").show();
+			$("#query_validity").hide();
+		});
+	}
+	else if(check_url_validity == "wrong_query")
+	{
+		$(document).ready(function(){
+			$("#query_validity").show();
+			$("#username_validity").hide()
+		});
+	}
+	else
+	{
+		$(document).ready(function(){
+			$("#query_validity").hide();
+			$("#username_validity").hide();
+		});
+	}
 </script>

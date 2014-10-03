@@ -103,123 +103,58 @@
 	function append_rows(start, end, page_number)
 	{
 		
-			for (var i = start; i< end; i++) 
+		for (var i = start; i< end; i++) 
+		{
+			if(i > urls_array.length)
 			{
-
-			    var row = document.createElement("tr");
-			    row.setAttribute("id", "myTr"+i);
-				row.setAttribute("style", "border-collapse: none");
-			    document.getElementById("myTable").appendChild(row);
-
-			    var col1 = document.createElement("td");
-			    col1.setAttribute("id", "myTd"+i);
-				col1.setAttribute("style", "border-collapse: none");
-			    document.getElementById("myTr"+i).appendChild(col1);
-
-			    var col2 = document.createElement("td");
-			    col2.setAttribute("id", "myTd"+i+"a");
-				col2.setAttribute("style", "border-collapse: none");
-			    document.getElementById("myTr"+i).appendChild(col2);
-
-			    /*var col3 = document.createElement("td");
-			    col3.setAttribute("id", "myTd"+i+"b");
-				col3.setAttribute("style", "border-collapse: none");
-			    document.getElementById("myTr"+i).appendChild(col3);
-
-			    var col4 = document.createElement("td");
-			    col4.setAttribute("id", "myTd"+i+"c");
-				col4.setAttribute("style", "border-collapse: none");
-			    document.getElementById("myTr"+i).appendChild(col4);
-
-			    var col5 = document.createElement("td");
-			    col5.setAttribute("id", "myTd"+i+"d");
-				col5.setAttribute("style", "border-collapse: none");
-			    document.getElementById("myTr"+i).appendChild(col5);*/
-
-				var image = document.createElement("img");
-				image.setAttribute('src',urls_array[i]+"m.jpg");
-				image.setAttribute('max-height','100%');
-				image.setAttribute('max-width','100%');
-				image.setAttribute('class','image-responsive');
-				image.setAttribute("id",urls_array[i]+"b.jpg");
-				image.setAttribute("onclick","click_image(this.id)");
-				document.getElementById("myTd"+i).appendChild(image);
-
-				if(i+1 < urls_array.length)
-				{
-					var image1 = document.createElement("img");
-					image1.setAttribute('src',urls_array[i+1]+"m.jpg");
-					image1.setAttribute('max-height','200%');
-					image1.setAttribute('max-width','200%');
-					image1.setAttribute('class','image-responsive');
-					image1.setAttribute("id",urls_array[i+1]+"b.jpg");
-					image1.setAttribute("onclick","click_image(this.id)");
-					document.getElementById("myTd"+i+"a").appendChild(image1);
-					i++;
-
-					if(i > urls_array.length)
-					{
-						$("#load_more_button").html("No more Images to load");
-						$("#load_more_button").prop("disable", true);
-						
-						break;
-					}
-					
-					/*if(i+2 < urls_array.length)
-					{
-						var image2 = document.createElement("img");
-						image2.setAttribute('src',urls_array[i+2]+"m.jpg");
-						image2.setAttribute('max-height','100%');
-						image2.setAttribute('max-width','100%');
-						image2.setAttribute('class','image-responsive');
-						image2.setAttribute("id",urls_array[i+2]+"b.jpg");
-						image2.setAttribute("onclick","click_image(this.id)");
-						document.getElementById("myTd"+i+"b").appendChild(image2);
-						
-
-						if(i+3 < urls_array.length)
-						{
-							var image3 = document.createElement("img");
-							image3.setAttribute('src',urls_array[i+3]+"m.jpg");
-							image3.setAttribute('max-height','100%');
-							image3.setAttribute('max-width','100%');
-							image3.setAttribute('class','image-responsive');
-							image3.setAttribute("id",urls_array[i+3]+"b.jpg");
-							image3.setAttribute("onclick","click_image(this.id)");
-							document.getElementById("myTd"+i+"c").appendChild(image3);
-
-							if(i+4 < urls_array.length)
-							{
-								var image4 = document.createElement("img");
-								image4.setAttribute('src',urls_array[i+4]+"m.jpg");
-								image4.setAttribute('max-height','100%');
-								image4.setAttribute('max-width','100%');
-								image4.setAttribute('class','image-responsive');
-								image4.setAttribute("id",urls_array[i+4]+"b.jpg");
-								image4.setAttribute("onclick","click_image(this.id)");
-								document.getElementById("myTd"+i+"d").appendChild(image4);	
-							}	
-						}
-					}
-					i = i+ 5;
-					*/
-				}
+				$("#load_more_button").html("No more Images to load");
+				$("#load_more_button").prop("disabled", true);
+				console.log("Disable");
+				
+				break;
 			}
+
+		    var row = document.createElement("tr");
+		    row.setAttribute("id", "myTr"+i);
+			row.setAttribute("style", "border-collapse: none");
+		    document.getElementById("myTable").appendChild(row);
+
+		    var col1 = document.createElement("td");
+		    col1.setAttribute("id", "myTd"+i);
+			col1.setAttribute("style", "border-collapse: none");
+		    document.getElementById("myTr"+i).appendChild(col1);
+
+		    var col2 = document.createElement("td");
+		    col2.setAttribute("id", "myTd"+i+"a");
+			col2.setAttribute("style", "border-collapse: none");
+		    document.getElementById("myTr"+i).appendChild(col2);
+
+			var image = document.createElement("img");
+			image.setAttribute('src',urls_array[i]+"m.jpg");
+			image.setAttribute('max-height','100%');
+			image.setAttribute('max-width','100%');
+			image.setAttribute('class','image-responsive');
+			image.setAttribute("id",urls_array[i]+"b.jpg");
+			image.setAttribute("onclick","click_image(this.id)");
+			document.getElementById("myTd"+i).appendChild(image);
+			console.log(i);
+
+			if(i+1 < urls_array.length)
+			{
+				var image1 = document.createElement("img");
+				image1.setAttribute('src',urls_array[i+1]+"m.jpg");
+				image1.setAttribute('max-height','200%');
+				image1.setAttribute('max-width','200%');
+				image1.setAttribute('class','image-responsive');
+				image1.setAttribute("id",urls_array[i+1]+"b.jpg");
+				image1.setAttribute("onclick","click_image(this.id)");
+				document.getElementById("myTd"+i+"a").appendChild(image1);
+				i++;
+				console.log(i);
+				console.log(urls_array.length);
+			}
+		}
 	}
-
-	
-
-
-	/*var load_more_form = document.createElement("form");
-	load_more_form.setAttribute("action", "/loadNext");
-	load_more_form.setAttribute("id","load_more_form");
-	$("myTable").append(load_more_form);
-
-	var load_more_button = document.createElement("button")
-	load_more_button.setAttribute("id","load_more_button");
-	load_more_button.setAttribute("type", "submit");
-	load_more_button.setAttribute("name","Load More Images");
-	document.getElementById("load_more_form").appendChild(load_more_button);*/
 
 	function click_image(image_id)
 	{
