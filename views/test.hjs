@@ -19,19 +19,7 @@
   	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
   	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
     
-  <style>
-  	.display_pic_table{
-  		display: table;
-  		text-align: center;
-		table-layout: fixed;
-		border-spacing: 10px 50px;
-		border-collapse: separate;
-		margin: 20%;
-		z-index: +1;
-
-	}
-	
-  </style></head>
+  </head>
 
 
 
@@ -92,11 +80,20 @@
 	</div>
  </body>
 <script style="text/javascript">
+
 	window.onload = click_on_hidden_button();
 	var all_urls;
 	var urls_array;
 	var page_number;
-	console.log("Length: "+urls_array.length);
+
+	function load_pics()
+	{
+		all_urls = document.getElementById("all_url").value;
+		urls_array = all_urls.split(',');
+		page_number = 1;
+
+		append_rows(0, 9, 1);
+	}
 
 	function click_on_hidden_button()
 	{
@@ -105,8 +102,7 @@
 
 	function append_rows(start, end, page_number)
 	{
-		if(page_number < urls_array.length/10)
-		{
+		
 			for (var i = start; i< end; i++) 
 			{
 
@@ -153,14 +149,22 @@
 				{
 					var image1 = document.createElement("img");
 					image1.setAttribute('src',urls_array[i+1]+"m.jpg");
-					image1.setAttribute('max-height','100%');
-					image1.setAttribute('max-width','100%');
+					image1.setAttribute('max-height','200%');
+					image1.setAttribute('max-width','200%');
 					image1.setAttribute('class','image-responsive');
 					image1.setAttribute("id",urls_array[i+1]+"b.jpg");
 					image1.setAttribute("onclick","click_image(this.id)");
 					document.getElementById("myTd"+i+"a").appendChild(image1);
-					
 					i++;
+
+					if(i > urls_array.length)
+					{
+						$("#load_more_button").html("No more Images to load");
+						$("#load_more_button").prop("disable", true);
+						
+						break;
+					}
+					
 					/*if(i+2 < urls_array.length)
 					{
 						var image2 = document.createElement("img");
@@ -201,23 +205,10 @@
 					*/
 				}
 			}
-		}
-		else
-		{
-			$("#load_more_button").html("No more Images to load");
-			$("#load_more_button").prop("disable", true);
-			console.log("disabled");
-		}
 	}
 
-	function load_pics()
-	{
-		all_urls = document.getElementById("all_url").value;
-		urls_array = all_urls.split(',');
-		page_number = 1;
+	
 
-		append_rows(0, 9, 1);
-	}
 
 	/*var load_more_form = document.createElement("form");
 	load_more_form.setAttribute("action", "/loadNext");
@@ -243,18 +234,10 @@
 		var total_pages = Math.round(urls_array.length /10);
 		var last_page_pics = urls_array.length - 10*(total_pages-1);
 
-		console.log("last_pics:"+last_page_pics);
-		console.log("total_pages: "+total_pages);
-
 		if(page_number == (total_pages-1))
 		{
-			console.log("inside the last page");
-			new_end = last_page_pics;
+			new_end = urls_array.length;
 		}
-
-		console.log("start: "+new_start+" || end: "+new_end+" || pgno: "+page_number);
-
-		console.log("pics/page:"+ (new_end - new_start));
 
 		page_number = page_number + 1;
 		append_rows(new_start, new_end, page_number);

@@ -207,3 +207,12 @@ p.copyright {
   background-color: #fd680e;
   border-color: #fd680e;
 }
+.display_pic_table{
+  display: table;
+  text-align: center;
+  table-layout: fixed;
+  border-spacing: 10px 50px;
+  border-collapse: separate;
+  margin: 20%;
+  z-index: +1;
+}
