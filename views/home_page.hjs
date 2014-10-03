@@ -109,8 +109,6 @@
 
 	var check_url_validity = window.location.search.substring(1);
 
-	console.log(check_url_validity);
-
 	if(check_url_validity == "no_results")
 	{
 		$(document).ready(function(){

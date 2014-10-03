@@ -98,9 +98,6 @@
 		users_array = all_users.split(',');
 		page_number = 1;
 
-		console.log(urls_array);
-		console.log(all_users)
-
 		append_rows(0, 9, 1);
 	}
 
