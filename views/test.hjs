@@ -21,7 +21,7 @@
     
   <style>
   	.display_pic_table{
-  		display: :table;
+  		display: table;
   		text-align: center;
 		table-layout: fixed;
 		border-spacing: 10px 50px;
