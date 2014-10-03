@@ -35,7 +35,7 @@
 
 
 
-  <body class="custom-body" style="background-image: none;">
+ <body class="custom-body" style="background-image: none;">
 
     <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -55,91 +55,216 @@
 	<div id="header" class="custom-header">
 
 		<div class="container">
-		<h1 style = " position: fixed">Images</h1>
+			<h1 style = " position: fixed">Images</h1>
+			<div id = "all_elements">
+				
 				<div id="images_display"></div>
 				<table id ="myTable" class ="display_pic_table"> </table>
 
-					<form method = 'post'>
-						<input type="hidden" id = "all_url" value ={{urls}}/>
-						<input type="hidden" id = "submit_button" onclick="load_pics()"/>
-					</form>
-					<script type="text/javascript">
-
-						window.onload = click_on_hidden_button();
-						function click_on_hidden_button()
-						{
-							document.getElementById("submit_button").click();
-						}
-
-						function load_pics()
-						{
-							var all_urls = document.getElementById("all_url").value;
-							var urls_array = all_urls.split(',');
-
-							for (var i = 0; i< urls_array.length - 1; i++) {
-
-							    var y = document.createElement("tr");
-							    y.setAttribute("id", "myTr"+i);
-								y.setAttribute("style", "border-collapse: none");
-							    document.getElementById("myTable").appendChild(y);
-
-							    var z = document.createElement("td");
-							    z.setAttribute("id", "myTd"+i);
-								z.setAttribute("style", "border-collapse: none");
-							    document.getElementById("myTr"+i).appendChild(z);
-
-							    var w = document.createElement("td");
-							    w.setAttribute("id", "myTd"+i+"a");
-								w.setAttribute("style", "border-collapse: none");
-							    document.getElementById("myTr"+i).appendChild(w);
-
-								var image = document.createElement("img");
-								image.setAttribute('src',urls_array[i]+"m.jpg");
-								image.setAttribute('max-height','100%');
-								image.setAttribute('max-width','100%');
-								image.setAttribute('class','image-responsive');
-								image.setAttribute("id",urls_array[i]+"b.jpg");
-								image.setAttribute("onclick","click_image(this.id)");
-								document.getElementById("myTd"+i).appendChild(image);
-
-								if(i+1 < urls_array.length)
-								{
-									var image1 = document.createElement("img");
-									image1.setAttribute('src',urls_array[i+1]+"m.jpg");
-									image1.setAttribute('max-height','100%');
-									image1.setAttribute('max-width','100%');
-									image1.setAttribute('class','image-responsive');
-									image1.setAttribute("id",urls_array[i+1]+"b.jpg");
-									image1.setAttribute("onclick","click_image(this.id)");
-									document.getElementById("myTd"+i+"a").appendChild(image1);
-									i++;
-								}
-							};
-						}
-					</script>
-				</div> 
-		</div>	
+				<form method = 'post'>
+					<input type="hidden" id = "all_url" value ={{urls}}/>
+					<input type="hidden" id = "submit_button" onclick="load_pics()"/>
+				</form>
+			</div>
+			<center><button id ="load_more_button"  class="load_more_images_button btn btn-primary btn-lg"> Load More Images </button></center>
+		</div>
 	</div>
 	<div id="footer">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3">
-					<p class="copyright">Copyright &copy; 2014 -Shrutika Dasgupta</p>
-			</div>
-		</div>		
-	</div>	
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3">
+						<p class="copyright">Copyright &copy; 2014 -Shrutika Dasgupta</p>
+				</div>
+			</div>		
+		</div>	
 	</div>
 
     <script src="bootstrap/js/jquery-1.10.2.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 
-    <script style="text/javascript">
-    	function click_image(image_id)
-    	{
-    		window.location.href = image_id;
-    	}
-    </script>
-  
+	<div class="pnt-on-image-wrapper" style="display: none;">
+		<div class="pnt-on-image">
+			<div class="pnticn pnticn-logo pnticnlarge">
+				
+			</div>
+			<div class="pnt-onimg-text">Point</div>
+		</div>
+	</div>
+ </body>
+<script style="text/javascript">
+	window.onload = click_on_hidden_button();
+	var all_urls;
+	var urls_array;
+	var page_number;
+	console.log("Length: "+urls_array.length);
 
-<div class="pnt-on-image-wrapper" style="display: none;"><div class="pnt-on-image"><div class="pnticn pnticn-logo pnticnlarge"></div><div class="pnt-onimg-text">Point</div></div></div></body></html>
+	function click_on_hidden_button()
+	{
+		document.getElementById("submit_button").click();
+	}
+
+	function append_rows(start, end, page_number)
+	{
+		if(page_number < urls_array.length/10)
+		{
+			for (var i = start; i< end; i++) 
+			{
+
+			    var row = document.createElement("tr");
+			    row.setAttribute("id", "myTr"+i);
+				row.setAttribute("style", "border-collapse: none");
+			    document.getElementById("myTable").appendChild(row);
+
+			    var col1 = document.createElement("td");
+			    col1.setAttribute("id", "myTd"+i);
+				col1.setAttribute("style", "border-collapse: none");
+			    document.getElementById("myTr"+i).appendChild(col1);
+
+			    var col2 = document.createElement("td");
+			    col2.setAttribute("id", "myTd"+i+"a");
+				col2.setAttribute("style", "border-collapse: none");
+			    document.getElementById("myTr"+i).appendChild(col2);
+
+			    /*var col3 = document.createElement("td");
+			    col3.setAttribute("id", "myTd"+i+"b");
+				col3.setAttribute("style", "border-collapse: none");
+			    document.getElementById("myTr"+i).appendChild(col3);
+
+			    var col4 = document.createElement("td");
+			    col4.setAttribute("id", "myTd"+i+"c");
+				col4.setAttribute("style", "border-collapse: none");
+			    document.getElementById("myTr"+i).appendChild(col4);
+
+			    var col5 = document.createElement("td");
+			    col5.setAttribute("id", "myTd"+i+"d");
+				col5.setAttribute("style", "border-collapse: none");
+			    document.getElementById("myTr"+i).appendChild(col5);*/
+
+				var image = document.createElement("img");
+				image.setAttribute('src',urls_array[i]+"m.jpg");
+				image.setAttribute('max-height','100%');
+				image.setAttribute('max-width','100%');
+				image.setAttribute('class','image-responsive');
+				image.setAttribute("id",urls_array[i]+"b.jpg");
+				image.setAttribute("onclick","click_image(this.id)");
+				document.getElementById("myTd"+i).appendChild(image);
+
+				if(i+1 < urls_array.length)
+				{
+					var image1 = document.createElement("img");
+					image1.setAttribute('src',urls_array[i+1]+"m.jpg");
+					image1.setAttribute('max-height','100%');
+					image1.setAttribute('max-width','100%');
+					image1.setAttribute('class','image-responsive');
+					image1.setAttribute("id",urls_array[i+1]+"b.jpg");
+					image1.setAttribute("onclick","click_image(this.id)");
+					document.getElementById("myTd"+i+"a").appendChild(image1);
+					
+					i++;
+					/*if(i+2 < urls_array.length)
+					{
+						var image2 = document.createElement("img");
+						image2.setAttribute('src',urls_array[i+2]+"m.jpg");
+						image2.setAttribute('max-height','100%');
+						image2.setAttribute('max-width','100%');
+						image2.setAttribute('class','image-responsive');
+						image2.setAttribute("id",urls_array[i+2]+"b.jpg");
+						image2.setAttribute("onclick","click_image(this.id)");
+						document.getElementById("myTd"+i+"b").appendChild(image2);
+						
+
+						if(i+3 < urls_array.length)
+						{
+							var image3 = document.createElement("img");
+							image3.setAttribute('src',urls_array[i+3]+"m.jpg");
+							image3.setAttribute('max-height','100%');
+							image3.setAttribute('max-width','100%');
+							image3.setAttribute('class','image-responsive');
+							image3.setAttribute("id",urls_array[i+3]+"b.jpg");
+							image3.setAttribute("onclick","click_image(this.id)");
+							document.getElementById("myTd"+i+"c").appendChild(image3);
+
+							if(i+4 < urls_array.length)
+							{
+								var image4 = document.createElement("img");
+								image4.setAttribute('src',urls_array[i+4]+"m.jpg");
+								image4.setAttribute('max-height','100%');
+								image4.setAttribute('max-width','100%');
+								image4.setAttribute('class','image-responsive');
+								image4.setAttribute("id",urls_array[i+4]+"b.jpg");
+								image4.setAttribute("onclick","click_image(this.id)");
+								document.getElementById("myTd"+i+"d").appendChild(image4);	
+							}	
+						}
+					}
+					i = i+ 5;
+					*/
+				}
+			}
+		}
+		else
+		{
+			$("#load_more_button").html("No more Images to load");
+			$("#load_more_button").prop("disable", true);
+			console.log("disabled");
+		}
+	}
+
+	function load_pics()
+	{
+		all_urls = document.getElementById("all_url").value;
+		urls_array = all_urls.split(',');
+		page_number = 1;
+
+		append_rows(0, 9, 1);
+	}
+
+	/*var load_more_form = document.createElement("form");
+	load_more_form.setAttribute("action", "/loadNext");
+	load_more_form.setAttribute("id","load_more_form");
+	$("myTable").append(load_more_form);
+
+	var load_more_button = document.createElement("button")
+	load_more_button.setAttribute("id","load_more_button");
+	load_more_button.setAttribute("type", "submit");
+	load_more_button.setAttribute("name","Load More Images");
+	document.getElementById("load_more_form").appendChild(load_more_button);*/
+
+	function click_image(image_id)
+	{
+		window.location.href = image_id;
+	}
+
+	
+	$("#load_more_button").click(function(){
+		
+		var new_start = page_number*10
+		var new_end = new_start + 10;
+		var total_pages = Math.round(urls_array.length /10);
+		var last_page_pics = urls_array.length - 10*(total_pages-1);
+
+		console.log("last_pics:"+last_page_pics);
+		console.log("total_pages: "+total_pages);
+
+		if(page_number == (total_pages-1))
+		{
+			console.log("inside the last page");
+			new_end = last_page_pics;
+		}
+
+		console.log("start: "+new_start+" || end: "+new_end+" || pgno: "+page_number);
+
+		console.log("pics/page:"+ (new_end - new_start));
+
+		page_number = page_number + 1;
+		append_rows(new_start, new_end, page_number);
+	});
+	
+</script>
+
+
+
+</html>
+
+
 

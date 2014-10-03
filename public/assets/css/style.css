@@ -194,8 +194,16 @@ p.copyright {
   
 }
 .custom-header{
-  background: url(/images/citylights.jpg);
+  background: url(/images/main-bg.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   z-index : -2;
+}
+
+.load_more_images_button{
+  margin-left: auto ;
+  margin-bottom: 10%;
+  margin-right: auto;
+  background-color: #fd680e;
+  border-color: #fd680e;
 }

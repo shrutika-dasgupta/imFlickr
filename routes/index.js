@@ -70,7 +70,7 @@ app.post('/test', function(request,result){
 				max_upload_date: max_upload_date,
 				text: search_query,
 				page: 1,
-				per_page: 10
+				per_page: 500
 			},function(err, res) {
 				if(res)
 				{
@@ -78,7 +78,6 @@ app.post('/test', function(request,result){
 					var photo_urls= new Array(res.photos.photo);
 					for (var i = res.photos.photo.length - 1; i >= 0 && i < 500; i--) {
 						photo_urls[i] = "https://farm"+res.photos.photo[i].farm+".staticflickr.com/"+res.photos.photo[i].server+"/"+res.photos.photo[i].id+"_"+res.photos.photo[i].secret+"_";
-						console.log(photo_urls[i]);
 					};
 					result.render('test', {urls: photo_urls});
 				}
@@ -192,6 +191,10 @@ app.post('/test', function(request,result){
 			});
 		});
 	}
+});
+
+app.post('/loadNext', function(request, result){
+
 });
 
 //console.log("window variable: ", window.photos);
