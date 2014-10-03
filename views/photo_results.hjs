@@ -226,6 +226,7 @@
 			var a1 = document.createElement("a");
 			a1.setAttribute("href",users_array[i]);
 			var user_text = document.createTextNode("Link to Profile");
+			user_text.style="color : #ffffff; font-weight:bold;";
             a1.appendChild(user_text);
             document.getElementById(link1_r2.id).appendChild(a1);
 
@@ -244,6 +245,7 @@
 				var a2 = document.createElement("a");
 				a2.setAttribute("href",users_array[i+1]);
 				var user_text2 = document.createTextNode("Link to Profile");
+				user_text2.style="color : #ffffff; font-weight:bold;";
 	            a2.appendChild(user_text2);
 	            document.getElementById(link2_r2.id).appendChild(a2);
 				i++;

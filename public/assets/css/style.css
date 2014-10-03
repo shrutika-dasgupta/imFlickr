@@ -198,7 +198,8 @@ p.copyright {
 }	
 
 .custom-body{
-  
+  margin-top: 0px;
+  font-size: 20px;
 }
 .custom-header{
   background: url(/images/neon-leo.jpg);
@@ -218,6 +219,8 @@ p.copyright {
   display: table;
   text-align: center;
   table-layout: fixed;
+  width: 150%;
+  height: 200%;
   border-spacing: 10px 50px;
   border-collapse: separate;
   margin: 20%;
@@ -226,7 +229,8 @@ p.copyright {
 
 .home-body
 {
-  margin-top: -140px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .slide-img{
@@ -236,4 +240,8 @@ p.copyright {
 .image-slide-css{
   border-radius: 25px;
   box-shadow: 10px 10px 5px #888888;
+}
+
+.col-lg-6 .form-ui{
+  margin-top: : 40px;
 }

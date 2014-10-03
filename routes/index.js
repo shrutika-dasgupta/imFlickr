@@ -59,6 +59,12 @@ app.post('/photo_results', function(request,result){
 		 return result.redirect("/?invalid_inputs");
 	}
 
+	if(search_query == "" && user_name == null)
+	{
+		console.log("wrong_query");
+		return result.redirect("/?no_fields_entered");
+	}
+
 
 	console.log("Inside the query");
 	console.log(search_query+" "+user_name+" "+ min_upload_date +" "+max_upload_date);
