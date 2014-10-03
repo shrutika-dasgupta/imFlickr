@@ -50,8 +50,9 @@
 				<table id ="myTable" class ="display_pic_table"> </table>
 
 				<form method = 'post'>
-					<input type="hidden" id = "all_url" value ={{urls}}/>
-					<input type="hidden" id = "submit_button" onclick="load_pics()"/>
+					<input type="hidden" id = "all_url" value ={{urls}}>
+					<input type="hidden" id = "all_users" value ={{users}}>
+					<input type="hidden" id = "submit_button" onclick="load_pics()">
 				</form>
 			</div>
 			<center><button id ="load_more_button"  class="load_more_images_button btn btn-primary btn-lg"> Load More Images </button></center>
@@ -83,14 +84,22 @@
 
 	window.onload = click_on_hidden_button();
 	var all_urls;
+	var all_users;
 	var urls_array;
+	var users_array;
 	var page_number;
 
 	function load_pics()
 	{
 		all_urls = document.getElementById("all_url").value;
 		urls_array = all_urls.split(',');
+
+		all_users = document.getElementById("all_users").value;
+		users_array = all_users.split(',');
 		page_number = 1;
+
+		console.log(urls_array);
+		console.log(all_users)
 
 		append_rows(0, 9, 1);
 	}
@@ -114,20 +123,91 @@
 				break;
 			}
 
+			//Main-row
+
 		    var row = document.createElement("tr");
-		    row.setAttribute("id", "myTr"+i);
+		    row.setAttribute("id", "myTr_"+i);
 			row.setAttribute("style", "border-collapse: none");
 		    document.getElementById("myTable").appendChild(row);
 
+		    //colum 1
+
 		    var col1 = document.createElement("td");
-		    col1.setAttribute("id", "myTd"+i);
+		    col1.setAttribute("id", "myTd_"+i);
 			col1.setAttribute("style", "border-collapse: none");
-		    document.getElementById("myTr"+i).appendChild(col1);
+		    document.getElementById(row.id).appendChild(col1);
+
+		    //tab1 -col1 -main-row
+
+		    var tab1 =document.createElement("table")
+		    tab1.id = "tab1_"+i;
+		    document.getElementById(col1.id).appendChild(tab1);
+
+		    //row1 -tab1 -col1
+
+		    var tab1_col1 = document.createElement("tr");
+		    tab1_col1.id ="tab1-col1_"+i;
+		    document.getElementById(tab1.id).appendChild(tab1_col1);
+
+		    //img -row1 -tab1 -col1
+
+		    var img1_r1 = document.createElement("td");
+		    img1_r1.setAttribute("id", "img1_r1_"+i);
+			img1_r1.setAttribute("style", "border-collapse: none");
+		    document.getElementById(tab1_col1.id).appendChild(img1_r1);
+
+		    //row2 -tab1- col1
+
+		    var tab1_col2 = document.createElement("tr");
+		    tab1_col2.id ="tab1_col2_"+i;
+		    document.getElementById(tab1.id).appendChild(tab1_col2);
+
+		    //link -row2 -tab1 -col1
+
+		    var link1_r2 = document.createElement("td");
+		    link1_r2.setAttribute("id", "link1_r1_"+i);
+			link1_r2.setAttribute("style", "border-collapse: none");
+		    document.getElementById(tab1_col2.id).appendChild(link1_r2);
+
+		    //col 2
 
 		    var col2 = document.createElement("td");
-		    col2.setAttribute("id", "myTd"+i+"a");
+		    col2.setAttribute("id", "myTd_"+i+"_a");
 			col2.setAttribute("style", "border-collapse: none");
-		    document.getElementById("myTr"+i).appendChild(col2);
+		    document.getElementById(row.id).appendChild(col2);
+
+		    //tab2 -col2
+
+		    var tab2 =document.createElement("table")
+		    tab2.id = "tab2_"+i;
+		    document.getElementById(col2.id).appendChild(tab2);
+
+		    //row1 -tab2 -col2
+
+		    var tab2_col1 = document.createElement("tr");
+		    tab2_col1.id ="tab2_col1_"+i;
+		    document.getElementById(tab2.id).appendChild(tab2_col1);
+
+		    //img -row2 -tab2 -col2
+
+		    var img2_r1 = document.createElement("td");
+		    img2_r1.setAttribute("id", "img2_r1_"+i);
+			img2_r1.setAttribute("style", "border-collapse: none");
+		    document.getElementById(tab2_col1.id).appendChild(img2_r1);
+
+		    //row2 -tab2 -col2
+
+		    var tab2_col2 = document.createElement("tr");
+		    tab2_col2.id ="tab2_col2_"+i;
+		    document.getElementById(tab2.id).appendChild(tab2_col2);
+
+		    //link -row2 -tab2 -col2
+
+		   	var link2_r2 = document.createElement("td");
+		    link2_r2.setAttribute("id", "link2_r2_"+i);
+			link2_r2.setAttribute("style", "border-collapse: none");
+		    document.getElementById(tab2_col2.id).appendChild(link2_r2);
+
 
 			var image = document.createElement("img");
 			image.setAttribute('src',urls_array[i]+"m.jpg");
@@ -136,10 +216,17 @@
 			image.setAttribute('class','image-responsive');
 			image.setAttribute("id",urls_array[i]+"b.jpg");
 			image.setAttribute("onclick","click_image(this.id)");
-			document.getElementById("myTd"+i).appendChild(image);
+			document.getElementById(img1_r1.id).appendChild(image);
+
+			var a1 = document.createElement("a");
+			a1.setAttribute("href",users_array[i]);
+			var user_text = document.createTextNode("Link to Profile");
+            a1.appendChild(user_text);
+            document.getElementById(link1_r2.id).appendChild(a1);
 
 			if(i+1 < urls_array.length)
 			{
+
 				var image1 = document.createElement("img");
 				image1.setAttribute('src',urls_array[i+1]+"m.jpg");
 				image1.setAttribute('max-height','200%');
@@ -147,7 +234,13 @@
 				image1.setAttribute('class','image-responsive');
 				image1.setAttribute("id",urls_array[i+1]+"b.jpg");
 				image1.setAttribute("onclick","click_image(this.id)");
-				document.getElementById("myTd"+i+"a").appendChild(image1);
+				document.getElementById(img2_r1.id).appendChild(image1);
+
+				var a2 = document.createElement("a");
+				a2.setAttribute("href",users_array[i+1]);
+				var user_text2 = document.createTextNode("Link to Profile");
+	            a2.appendChild(user_text2);
+	            document.getElementById(link2_r2.id).appendChild(a2);
 				i++;
 			}
 		}

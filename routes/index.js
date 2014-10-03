@@ -34,29 +34,25 @@ app.post('/test', function(request,result){
 	var search_query = null;
 	var user_name = null;
 	var min_upload_date = null;
-	var max_upload_date = null;
+	var max_upload_date = null; 
 
-	if(request.body.search_query != "")
-	{
-		var search_query_init = request.body.search_query;
-		search_query = search_query_init.split(' ').join('+');
-	}	
+	var search_query_init = request.body.search_query;
+	search_query = search_query_init.split(' ').join('+');
+	console.log(search_query);	
 	
 	if(request.body.user_name != "")
 	{
 		user_name = (request.body.user_name).split(' ').join('+');
+		console.log("user: "+user_name);
 	}
-
-	if(request.body.min_upload_date != "")
+	if(request.body.min_upload_date != null)
 		min_upload_date = new Date(request.body.min_upload_date).toMysqlFormat();
-	if(request.body.max_upload_date != "")
+	if(request.body.max_upload_date != null)
 		max_upload_date = new Date(request.body.max_upload_date).toMysqlFormat();
 
-	if(search_query == null && user_name == null && min_upload_date == null && max_upload_date == null)
-	{
-		result.redirect('/?invalid_inputs');
-	}
 
+	console.log("Inside the query");
+	console.log(search_query+" "+user_name+" "+ min_upload_date +" "+max_upload_date);
 	var flickrOptions = 
 	{
 	    api_key : "b2c3a760a15f0a7eb0f03d228a4b68c3",
@@ -65,6 +61,7 @@ app.post('/test', function(request,result){
 
 	if(user_name == null )
 	{
+		console.log("i am here");
 
 		Flickr.tokenOnly(flickrOptions,function(error, flickr) {
 
@@ -77,16 +74,16 @@ app.post('/test', function(request,result){
 			},function(err, res) {
 				if(res)
 				{
-					if(res.photos.pages == 0)
-					{
-						result.redirect('/?invalid_inputs');
-					}
 					console.log(res);
-					var photo_urls= new Array(res.photos.photo);
+					var photo_urls= new Array(res.photos.photo.length);
+					var users_urls= new Array(res.photos.photo.length);
 					for (var i = res.photos.photo.length - 1; i >= 0 && i < 500; i--) {
 						photo_urls[i] = "https://farm"+res.photos.photo[i].farm+".staticflickr.com/"+res.photos.photo[i].server+"/"+res.photos.photo[i].id+"_"+res.photos.photo[i].secret+"_";
+						console.log(photo_urls[i]);
+						users_urls[i] = "http://www.flickr.com/people/"+res.photos.photo[i].owner+"/";
+						console.log(users_urls[i]);
 					};
-					result.render('test', {urls: photo_urls});
+					result.render('test', {urls: photo_urls, users: users_urls});
 				}
 				else
 				{
@@ -177,11 +174,14 @@ app.post('/test', function(request,result){
 						},function(err, res) {
 							if(res)
 							{
-								var photo_urls= new Array(res.photos.photo);
+								var photo_urls= new Array(res.photos.photo.length);
+								var users_urls= new Array(res.photos.photo.length);
 								for (var i = res.photos.photo.length - 1; i >= 0 && i < 500; i--) {
 									photo_urls[i] = "https://farm"+res.photos.photo[i].farm+".staticflickr.com/"+res.photos.photo[i].server+"/"+res.photos.photo[i].id+"_"+res.photos.photo[i].secret+"_";
+									users_urls[i] = "http://www.flickr.com/people/"+res.photos.photo[i].owner+"/";
+									console.log(users_urls[i]);
 								};
-								result.render('test', {urls: photo_urls});
+								result.render('test', {urls: photo_urls, users: users_urls});
 							}
 							else
 							{
