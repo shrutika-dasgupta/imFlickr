@@ -216,3 +216,8 @@ p.copyright {
   margin: 20%;
   z-index: +1;
 }
+
+.home-body
+{
+  margin-top: -140px;
+}

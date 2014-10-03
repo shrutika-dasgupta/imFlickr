@@ -23,7 +23,7 @@
 
 
 
- <body class="custom-body" style="background-image: none;">
+ <body class="custom-body home-body" style="background-image: none;">
 
     <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -137,7 +137,6 @@
 			image.setAttribute("id",urls_array[i]+"b.jpg");
 			image.setAttribute("onclick","click_image(this.id)");
 			document.getElementById("myTd"+i).appendChild(image);
-			console.log(i);
 
 			if(i+1 < urls_array.length)
 			{
@@ -150,8 +149,6 @@
 				image1.setAttribute("onclick","click_image(this.id)");
 				document.getElementById("myTd"+i+"a").appendChild(image1);
 				i++;
-				console.log(i);
-				console.log(urls_array.length);
 			}
 		}
 	}
