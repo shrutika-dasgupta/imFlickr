@@ -43,9 +43,8 @@
 				<div class="col-lg-6">
 					
 					<h2 class="subtitle">The improved flickr</h2>
-					<h2 class="subtitle" id="username_validity"> Invalid Username</h2>
-					<h2 class="subtitle" id="query_validity"> Invalid Search Query</h2>
-					<form method= 'post' action= '/test' class="form-inline" role="form">
+					<h2 class="subtitle2" id= "input_validity"> </h2>
+					<form method= 'post' action= '/photo_results' class="form-inline" role="form">
 					  <div class="form-group">
 					  <table class = "table">
 					  	<tr ><td><input type="text" class="form-control" name="search_query" placeholder="Enter Search"></td></tr>
@@ -110,25 +109,30 @@
 
 	var check_url_validity = window.location.search.substring(1);
 
-	if(check_url_validity == "invalid_username")
+	console.log(check_url_validity);
+
+	if(check_url_validity == "no_results")
 	{
 		$(document).ready(function(){
-			$("#username_validity").show();
-			$("#query_validity").hide();
+			$("#input_validity").text("NO RESULTS OBTAINED! TRY AGAIN");
+		});
+	}
+	else if(check_url_validity == "invalid_username")
+	{
+		$(document).ready(function(){
+			$("#input_validity").text("INVALID USERNAME");
 		});
 	}
 	else if(check_url_validity == "invalid_inputs")
 	{
 		$(document).ready(function(){
-			$("#query_validity").show();
-			$("#username_validity").hide()
+			$("#input_validity").text("INVALID INPUTS");
 		});
 	}
 	else
 	{
 		$(document).ready(function(){
-			$("#query_validity").hide();
-			$("#username_validity").hide();
+			$("#input_validity").hide();
 		});
 	}
 </script>

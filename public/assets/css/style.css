@@ -146,6 +146,13 @@ a.navbar-brand:hover {
 h2.subtitle {
 	color: #fff;
 	font-size: 20px;
+  font-weight: bold;
+}
+
+.subtitle2 {
+  color: #ff0000;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* slide */
@@ -194,7 +201,7 @@ p.copyright {
   
 }
 .custom-header{
-  background: url(/images/main-bg.jpg);
+  background: url(/images/neon-leo.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   z-index : -2;

@@ -123,6 +123,11 @@
 				break;
 			}
 
+			if((urls_array[i]).indexOf("undefined") != -1)
+			{
+				continue;
+			}
+
 			//Main-row
 
 		    var row = document.createElement("tr");
