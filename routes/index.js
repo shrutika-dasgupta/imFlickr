@@ -6,6 +6,25 @@ app.get('/', function(req, res){
 	res.render('template3' );
 });
 
+function twoDigits(d) 
+{
+    if(0 <= d && d < 10) 
+    	return "0" + d.toString();
+    if(-10 < d && d < 0) 
+    	return "-0" + (-1*d).toString();
+    return d.toString();
+}
+
+Date.prototype.toMysqlFormat = function() 
+{
+    return this.getUTCFullYear() + "-" 
+    	+ twoDigits(1 + this.getUTCMonth()) + "-" 
+    	+ twoDigits(this.getUTCDate()) + " " 
+    	+ twoDigits(this.getUTCHours()) + ":" 
+    	+ twoDigits(this.getUTCMinutes()) + ":" 
+    	+ twoDigits(this.getUTCSeconds());
+};
+
 app.post('/test', function(request,result){
 
 
@@ -17,35 +36,9 @@ app.post('/test', function(request,result){
 	var min_upload_date = null;
 	var max_upload_date = null; 
 
-	function twoDigits(d) 
-	{
-	    if(0 <= d && d < 10) 
-	    	return "0" + d.toString();
-	    if(-10 < d && d < 0) 
-	    	return "-0" + (-1*d).toString();
-	    return d.toString();
-	}
-
-	Date.prototype.toMysqlFormat = function() 
-	{
-	    return this.getUTCFullYear() + "-" 
-	    	+ twoDigits(1 + this.getUTCMonth()) + "-" 
-	    	+ twoDigits(this.getUTCDate()) + " " 
-	    	+ twoDigits(this.getUTCHours()) + ":" 
-	    	+ twoDigits(this.getUTCMinutes()) + ":" 
-	    	+ twoDigits(this.getUTCSeconds());
-	};
-
-	/*if(request.body.search_query != "")
-	{*/
-		var search_query_init = request.body.search_query;
-		search_query = search_query_init.split(' ').join('+');
-		console.log(search_query);
-	//}
-	/*else
-	{
-		result.redirect('/?wrong_query');
-	}*/
+	var search_query_init = request.body.search_query;
+	search_query = search_query_init.split(' ').join('+');
+	console.log(search_query);	
 	
 	if(request.body.user_name != "")
 	{
@@ -77,7 +70,7 @@ app.post('/test', function(request,result){
 				max_upload_date: max_upload_date,
 				text: search_query,
 				page: 1,
-				per_page: 500
+				per_page: 10
 			},function(err, res) {
 				if(res)
 				{
