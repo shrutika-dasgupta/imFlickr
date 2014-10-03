@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+
+    <title>imFlickr - Improved Flickr</title>
+
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-theme.css" rel="stylesheet">
+
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+ 	 <link rel="stylesheet" href="/resources/demos/style.css">
+    
+  <style type="text/css"></style></head>
+
+  <body class ="custom-body">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">imFlickr</a>
+        </div>
+        
+      </div>
+    </div>
+
+	<script type="text/javascript">
+
+		var check_url_validity = window.location.search.substring(1);
+	
+		if(check_url_validity == "invalid_username")
+		{
+			$(document).ready(function(){
+				$("#username_validity").show();
+				$("#query_validity").hide();
+			});
+		}
+		else if(check_url_validity == "wrong_query")
+		{
+			$(document).ready(function(){
+				$("#query_validity").show();
+				$("#username_validity").hide()
+			});
+		}
+		else
+		{
+			$(document).ready(function(){
+				$("#query_validity").hide();
+				$("#username_validity").hide();
+			});
+		}
+	</script>
+
+	<div id="header" class="custom-header">
+		<div class="container">
+		<h1>imFlickr</h1>
+			<div class="row">
+				<div class="col-lg-6">
+					
+					<h2 class="subtitle">The improved flickr</h2>
+					<h2 class="subtitle" id="username_validity"> Invalid Username</h2>
+					<h2 class="subtitle" id="query_validity"> Invalid Search Query</h2>
+					<form method= 'post' action= '/test' class="form-inline" role="form">
+					  <div class="form-group">
+					  <table class = "table">
+					  	<tr ><td><input type="text" class="form-control" name="search_query" placeholder="Enter Search"></td></tr>
+					    <tr ><td><input type="text" class="form-control" name="user_name" placeholder="Enter to Username"></td></tr>
+					    <tr ><td><input id="datepicker1" type="text" class="form-control" name="min_upload_date" placeholder="Uploaded since"> </td></tr>
+					    <tr ><td><input id="datepicker2" type="text" class="form-control" name="max_upload_date" placeholder="Uploaded until"></td></tr>
+					    <tr><td><button type="submit" class="btn btn-theme">search</button></td></tr>
+					  </table>
+					  </div>
+					 
+					</form>					
+				</div>
+				<div class="col-lg-4 col-lg-offset-2">
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					  <ol class="carousel-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+						<li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+					  </ol>					
+					  <!-- slides -->
+					  <div class="carousel-inner">
+						<div class="item active">
+						  <img src="images/slide1.png" alt="">
+						</div>
+						<div class="item">
+						  <img src="images/slide2.png" alt="">
+						</div>
+						<div class="item">
+						  <img src="images/slide3.png" alt="">
+						</div>
+					  </div>
+					</div>		
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3">
+					<p class="copyright">Copyright &copy; 2014 -Shrutika</p>
+			</div>
+		</div>		
+	</div>	
+	</div>
+
+    <script src="bootstrap/js/jquery-1.10.2.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  
+
+<div class="pnt-on-image-wrapper" style="display: none;"><div class="pnt-on-image"><div class="pnticn pnticn-logo pnticnlarge"></div><div class="pnt-onimg-text">Point</div></div></div></body></html>
+<script>
+	$(function() {
+    $( "#datepicker1" ).datepicker();
+  });
+	$(function() {
+    $( "#datepicker2" ).datepicker();
+  });
+</script>
+
+<script type="text/javascript">
+	
+</script>
