@@ -1,6 +1,6 @@
-Project	Name	: imFlickr - Improved Flicker
+***Project	Name	: imFlickr - Improved Flicker***
 
-*Instructions to Run and host the project on local server*
+**Instructions to Run and host the project on local server**
 
 
 1) The project is built on Node.js server, implementing the Express module. 
@@ -16,29 +16,38 @@ Project	Name	: imFlickr - Improved Flicker
 		http://localhost:3000/
 6) On clicking enter you will be redirected to the project website.
 
-*User Interface Design Decisions*
+**User Interface Design Decisions**
 
 1) The UI is so designed so that it tries to statisfying maximum of the "Usability Design Heuristics".
 2) A few of the statistics that have been taken care of are:
-	- **Visibility of System Status:** The user is informed of all the validation errors that have occured 
+	
+- **Visibility of System Status:** The user is informed of all the validation errors that have occured 
 	    when entering the data by appropriate error message handling. Also the "load more images" button
 	    is disabled when no more images are available to load.
-	- **Match between System and real World:** The language and instructions are kept very clean an simple,
+	
+- **Match between System and real World:** The language and instructions are kept very clean an simple,
 	    thus easy to comprehend.
-	- **User Control and Freedom:** Due to appropriate error handling mechanisms, the user is given a flexibility
+	
+- **User Control and Freedom:** Due to appropriate error handling mechanisms, the user is given a flexibility
 	    to given inputs that are not valid and the user is redirected to the same page if anything goes wrong.
 	    This gives the user the flexibility to play around with the application.
-	- **Consistency and Standards:** The UI is so designed that it follows all the standard UI conventions
-	- **Error Prevention:** So as the user does not enter invalid values in the Date fields for the "Uploaded Since"
+	
+- **Consistency and Standards:** The UI is so designed that it follows all the standard UI conventions
+	
+- **Error Prevention:** So as the user does not enter invalid values in the Date fields for the "Uploaded Since"
 	   and "Uploaded Untill" input box, a date-picker element is provided that helps the user enter valid inputs.
-	- **Recognition and Recall:** The UI is very simple for navigation so that it is convenient for the user to use 
+	
+- **Recognition and Recall:** The UI is very simple for navigation so that it is convenient for the user to use 
 	   it without any issues.
-	- **Aesthetic and Minimalistic Design:** The UI design is kept simple and Aesthetic with relevant information.
-	- **Helping users recognize, diagnose and recover from errors:** The error messages help serve the purpose.
-	- **Help and Documentation:** This README is provided giving proper instructions for installation and use of the 
+	
+- **Aesthetic and Minimalistic Design:** The UI design is kept simple and Aesthetic with relevant information.
+	
+- **Helping users recognize, diagnose and recover from errors:** The error messages help serve the purpose.
+	
+- **Help and Documentation:** This README is provided giving proper instructions for installation and use of the 
 	    application.
 
-*Instructions for Use*
+**Instructions for Use**
 
 1) The user can search a query for retrieving photos, as the application implements Flickr APPI.
 2) The user can give the following combinations of inputs and thier respective results are obtained:
@@ -65,7 +74,7 @@ Project	Name	: imFlickr - Improved Flicker
 8) A "Link to User Profile" is added to visit the users profile to whom the photo belongs.
 7) By clicking on the application name the user is redirected to the home page.
 
-*References*
+**References**
 - Convert javascript date to mysql date format
 http://stackoverflow.com/questions/5129624/convert-js-date-time-to-mysql-datetime
 
