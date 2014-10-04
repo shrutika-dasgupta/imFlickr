@@ -4,21 +4,28 @@
 
 
 1) The project is built on Node.js server, implementing the Express module. 
+
 2) It is required to have Node.js installed in the host machine to host this project. Instructions to which are provided in:
 		http://www.nodejs.org
+
 3) For running the project first, it is required to go inside the project directory where you have coned this project
     and preform the action :
 		$ npm install
    This will install all the required dependencies for the project that might be required to run the project.
+
 4) The server is to be turned on using the file app.js. Run the following command
 		$ nodemon ./bin/www
+
 5) Then going to the browser, please type the following in the address bar:
 		http://localhost:3000/
+
 6) On clicking enter you will be redirected to the project website.
 
 **User Interface Design Decisions**
 
+
 1) The UI is so designed so that it tries to statisfying maximum of the "Usability Design Heuristics".
+
 2) A few of the statistics that have been taken care of are:
 	
 - **Visibility of System Status:** The user is informed of all the validation errors that have occured 
@@ -49,30 +56,52 @@
 
 **Instructions for Use**
 
-1) The user can search a query for retrieving photos, as the application implements Flickr APPI.
+
+1) The user can search a query for retrieving photos, as the application implements Flickr API.
+
 2) The user can give the following combinations of inputs and thier respective results are obtained:
-	1. No inputs at all (All fields blank) - An error message will be displayed=> "Invalid Inputs"
-	2. Only the search query 
+	
+	-> No inputs at all (All fields blank) - An error message will be displayed=> "Invalid Inputs"
+	
+	-> Only the search query 
+		
 		- The results for the given search query if available
+		
 		- or an error message saying "No Results found! Try again" if no results are found
+		
 		- or an error message saying "Invalid Inputs" if an invalid query is entered
-	3. Only the user name:
+	
+	-> Only the user name:
+	
 		- The results for the given user if available
+	
 		- Or an error message saying "No Results found! Try again" if no results are found
+	
 		- Or an error message saying "Invalid Username" if user is not found
-	4. Only the date fields:
+	
+	-> Only the date fields:
+	
 	 	- or an error message saying "Invalid Inputs".
-	5. All valid fields: 
-		- The page is redirected to the results page.
+	
+	-> All valid fields: 
+	
+			- The page is redirected to the results page.
+
 3) On the results page the user can view all the results that are obtained for the given search query and conditions.
+
 4) On loading the page for the first time, if shows 10 results, but when scrolled to the end of the page, another button
 	is visible saying "Load More Images".
+
 5) This appends to the page next 10 results, and so on.
+
 6) The button becomes disabaled when all the results for the given search query is returned, and the message on the button
 	changes to "No more images to load".
+
 7) On clicking on the image, a bigger version of it is opened in the browser window.
+
 8) A "Link to User Profile" is added to visit the users profile to whom the photo belongs.
-7) By clicking on the application name the user is redirected to the home page.
+
+9) By clicking on the application name the user is redirected to the home page.
 
 **References**
 - Convert javascript date to mysql date format
