@@ -61,8 +61,8 @@ app.post('/photo_results', function(request,result){
 
 	var flickrOptions = 
 	{
-	    api_key : "b2c3a760a15f0a7eb0f03d228a4b68c3",
-	    secret : "0337ca2063d0daea"
+	    api_key : "YOUR API KEY",
+	    secret : "YOUR API SECRET"
 	};
 
 	if(user_name == null )
